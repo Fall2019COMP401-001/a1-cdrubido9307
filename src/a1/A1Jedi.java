@@ -10,6 +10,9 @@ public class A1Jedi {
 
 		// Get and stores the number of items in the store: numberOfItems (integer)
 		int numberOfItems = scan.nextInt();
+		
+		// Stores the number of customers that bought a particular item:
+		int numberOfCustomers = 0;
 
 		// Create an array to store the items or product names: itemNames (String[])
 		String[] itemNames = new String[numberOfItems];
