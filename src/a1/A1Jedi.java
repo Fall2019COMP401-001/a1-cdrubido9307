@@ -11,8 +11,9 @@ public class A1Jedi {
 		// Get and stores the number of items in the store: numberOfItems (integer)
 		int numberOfItems = scan.nextInt();
 		
-		// Stores the number of customers that bought a particular item:
-		int numberOfCustomers = 0;
+		int[] totalOfItemsPerCustomer = new int [numberOfItems];
+		int[] totalOfCustomersPerItem = new int [numberOfItems];
+		boolean[] checkItemName = new boolean[numberOfItems];
 
 		// Create an array to store the items or product names: itemNames (String[])
 		String[] itemNames = new String[numberOfItems];
@@ -39,9 +40,6 @@ public class A1Jedi {
 		// Creates an array to store the customers last names: customersLastNames (String[])
 		String[] customersLastNames = new String[numberOfCustomer];
 		
-		// Creates an array to store the QTY of items bought by each customer: itemCount (int[])
-		int[] itemCount = new int[numberOfCustomer];
-		
 		/*
 		 	Iterates over the number of customers to get the customers info.
 		 */
@@ -53,17 +51,39 @@ public class A1Jedi {
 			// Gets each customer last name and stores it in the ith position of the array:
 			customersLastNames[i] = scan.next();
 			
-			// Gets each customers count for items bought and stores it in the ith position of the array:
-			itemCount[i] = scan.nextInt();
+			int numberOfItemsBoughtByCustomer = scan.nextInt();
+
+			int[] itemQtys = new int[numberOfItemsBoughtByCustomer];
+			String[] selectedItem = new String[numberOfItemsBoughtByCustomer];
 			
 			// Iterates over each itemQtys to get the name and quantity of every item bought:
-			for(int j=0; j<itemCount[i]; j++) {
+			for(int j=0; j<numberOfItemsBoughtByCustomer; j++) {
 				
-				// Gets the qty of each item:
-				int itemQty = scan.nextInt();
+				itemQtys[j] = scan.nextInt();
+				selectedItem[j] = scan.next();
 				
-				// Gets the name of the item:
-				String itemName = scan.next();
+				for (int x=0; x<numberOfItems; x++) {
+					
+					if (selectedItem[j].equals(itemNames[x])) {
+						
+						if (!checkItemName[x]) {
+							
+							totalOfCustomersPerItem[x] += 1;
+							checkItemName[x] = true;	
+						}
+						
+						totalOfItemsPerCustomer[x] += itemQtys[j];
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i< numberOfItems; i++) {
+			if (totalOfItemsPerCustomer[i] == 0) {
+				System.out.println("No customer bought " + itemNames[i]);
+			}
+			else {
+				System.out.println(totalOfCustomersPerItem[i] + " customers bought " + totalOfItemsPerCustomer[i] + " " + itemNames[i]);
 			}
 		}
 		
