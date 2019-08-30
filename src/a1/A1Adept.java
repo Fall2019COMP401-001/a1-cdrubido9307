@@ -102,8 +102,9 @@ public class A1Adept {
 		double max = amountsSpent[0];
 		String bigSpender = " ";
 		for (int i = 0; i<amountsSpent.length; i++) {
-			if (amountsSpent[i] >= max) {
+			if (max < amountsSpent[i]) {
 				bigSpender =  "Biggest: " + firstNames[i] + " " + lastNames[i] + " (" + String.format("%.2f", amountsSpent[i]) + ")";
+				max = amountsSpent[i];
 			}
 		}
 		return bigSpender;
@@ -114,8 +115,9 @@ public class A1Adept {
 			double min = amountsSpent[0];
 			String smallSpender = " ";
 			for (int i = 0; i<amountsSpent.length; i++) {
-				if (amountsSpent[i] <= min) {
+				if (min > amountsSpent[i]) {
 					smallSpender =  "Smallest: " + firstNames[i] + " " + lastNames[i] + " (" + String.format("%.2f", amountsSpent[i]) + ")";
+					min = amountsSpent[i];
 				}
 			}
 			return smallSpender;
