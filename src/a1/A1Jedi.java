@@ -13,7 +13,7 @@ public class A1Jedi {
 		
 		int[] totalOfItemsPerCustomer = new int [numberOfItems];
 		int[] totalOfCustomersPerItem = new int [numberOfItems];
-		boolean[] checkItemName = new boolean[numberOfItems];
+		
 
 		// Create an array to store the items or product names: itemNames (String[])
 		String[] itemNames = new String[numberOfItems];
@@ -44,6 +44,8 @@ public class A1Jedi {
 		 	Iterates over the number of customers to get the customers info.
 		 */
 		for(int i=0; i<numberOfCustomer; i++) {
+			
+			boolean[] checkItemName = new boolean[numberOfItems];
 			
 			// Gets each customers first names and stores it in the ith position of the array: 
 			customersFirstNames[i] = scan.next();
